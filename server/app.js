@@ -1,5 +1,9 @@
 const express = require('express');
 const connectDB = require('./db/connect');
+require('dotenv').config();
+
+// routers
+const authRouter = require('./routes/auth.router');
 
 // constants
 const PORT = process.env.PORT || 8080;
@@ -7,6 +11,12 @@ const URI = process.env.MONGODB_URI;
 
 // initialize new app
 const app = express();
+
+// middlewares
+app.use(express.json());
+
+// routes
+app.use('/api/v1/auth', authRouter);
 
 app.listen(PORT, async () => {
   try {

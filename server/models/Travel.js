@@ -7,7 +7,7 @@ const travelSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -19,6 +19,11 @@ const travelSchema = new mongoose.Schema(
       trim: true,
       minlength: 3,
     },
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     startDate: {
       type: Date,
       required: true,
@@ -28,16 +33,26 @@ const travelSchema = new mongoose.Schema(
       required: true,
     },
     durationUnit: {
-      type: Enumerator,
+      type: String,
       enum: ['days', 'weeks', 'months', 'years'],
       required: true,
     },
+    country: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    city: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     transportation: {
-      type: Enumerator,
+      type: String,
       enum: ['plane', 'train', 'bus', 'car', 'boat'],
       required: true,
     },
-    budget: {
+    price: {
       type: Number,
       required: true,
     },

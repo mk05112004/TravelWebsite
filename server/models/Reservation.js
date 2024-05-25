@@ -13,7 +13,7 @@ const reservationSchema = new mongoose.Schema(
       required: true,
     },
     status: {
-      type: Enumerator,
+      type: String,
       enum: ['pending', 'approved', 'rejected'],
       required: true,
     },
