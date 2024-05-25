@@ -56,7 +56,8 @@ header {
 } */
 
 .logo {
-  width: 50px;
+  width: 40px;
+  border-radius: 10px;
 }
 
 nav ul {
