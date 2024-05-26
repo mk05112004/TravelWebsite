@@ -155,7 +155,6 @@ option {
   -webkit-background-clip: text; /* For Safari */
   background-clip: text;
   color: transparent; /* Hide original text */
-  display: inline-block; /* Ensure gradient only applies to text */
   position: relative;
   animation: 2.5s enter-from-bottom;
 }

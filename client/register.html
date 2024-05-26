@@ -9,7 +9,7 @@
       id="bootstrap-css"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Login</title>
+    <title>Sign up</title>
   </head>
   <body>
     <div class="tile">
@@ -25,16 +25,42 @@
             height: 100%;
           "
         >
-          SIGN IN
+          SIGN UP
         </h2>
       </div>
 
       <div class="tile-body">
         <form id="form">
           <label class="form-input">
+            <select class="form-control" name="role">
+              <option value="1">Level 1</option>
+              <option value="2">Level 2</option>
+              <option value="3">Level 3</option>
+              <option value="4">Level 4</option>
+              <option value="5">Level 5</option>
+            </select>
+            <span class="label">Level</span>
+            <span class="underline"></span>
+          </label>
+
+          <label class="form-input">
             <i class="material-icons">account_box</i>
             <input type="email" required />
-            <span class="label">Email address or phone number</span>
+            <span class="label">Full Name</span>
+            <div class="underline"></div>
+          </label>
+
+          <label class="form-input">
+            <i class="material-icons">email</i>
+            <input type="email" required />
+            <span class="label">Email address</span>
+            <div class="underline"></div>
+          </label>
+
+          <label class="form-input">
+            <i class="material-icons">phone</i>
+            <input type="email" required />
+            <span class="label">Phone number</span>
             <div class="underline"></div>
           </label>
 
@@ -53,7 +79,7 @@
               class="btn btn-irenic float-right"
               tabindex="0"
             >
-              <span>SIGN IN</span>
+              <span>SIGN UP</span>
             </div>
 
             <div class="login-pending">
@@ -76,5 +102,3 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </body>
 </html>
-
-<!------ Include the above in your HEAD tag ---------->
