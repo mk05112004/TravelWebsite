@@ -63,7 +63,7 @@ const travelSchema = new mongoose.Schema(
     },
     registrations: {
       type: Number,
-      required: true,
+      default: 0,
     },
     rating: {
       type: Number,
