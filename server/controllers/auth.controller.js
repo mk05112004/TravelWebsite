@@ -44,6 +44,7 @@ const register = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
+    next(error);
   }
 };
 
@@ -100,6 +101,7 @@ const login = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
+    next(error);
   }
 };
 

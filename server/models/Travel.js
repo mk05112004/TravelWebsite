@@ -37,7 +37,7 @@ const travelSchema = new mongoose.Schema(
       enum: ['days', 'weeks', 'months', 'years'],
       required: true,
     },
-    country: {
+    state: {
       type: String,
       required: true,
       trim: true,
