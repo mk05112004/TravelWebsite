@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const travelSchema = new mongoose.Schema(
   {
-    number: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
+    // number: {
+    //   type: Number,
+    //   required: true,
+    //   unique: true,
+    // },
     name: {
       type: String,
       required: true,

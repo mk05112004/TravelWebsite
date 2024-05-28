@@ -33,9 +33,28 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       minlength: 8,
     },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
     level: {
       type: String,
       enum: ['P1', 'P2', 'P3', 'P4', 'P5'],
+      required: true,
+    },
+    state: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
+    school: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'School',
       required: true,
     },
   },
