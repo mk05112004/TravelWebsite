@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+  overflow-x: hidden;
+}
+
+.btn {
+  border-radius: 4px;
+  padding: 0.25rem 0.7rem;
+}
+
+.logo {
+  width: 40px;
+  border-radius: 10px;
+}
+
+.navbar {
+  padding: 10px 6.3%;
+  background-color: #07beb8 !important;
+}
+
+.search-button {
+  color: #fff;
+  width: 100px;
+  border: 2px solid #fff;
+}
+
+.search-button:hover {
+  border: 2px solid #11dcd5;
+  background-color: #f7f7f7;
+  color: #11dcd5;
+}
+
+.row {
+  padding: 50px 7%;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  padding: 0 7%;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.header-space {
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.offcanvas-body form button {
+  width: 150px;
+  margin-left: calc(100% - 150px);
+}
+
+.offcanvas-body label {
+  color: #49dbd6;
+}
+
+.offcanvas-title {
+  color: #07beb8;
+}
+
+.flex-container {
+  display: flex;
+  gap: 20px;
+}
+
+.flex-container div {
+  flex-grow: 1;
+}
+
+.table-container {
+  padding: 0 7%;
+}
+
+td {
+  text-align: left;
+}
+
+.last-column {
+  width: 250px;
+}
+
+.last-column button:last-child {
+  margin-left: 10px;
+}
+
+.card {
+  border: none;
+  background: linear-gradient(to right, #2ef3ec, #7cddda);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.school-card {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.school-card:hover {
+  transform: scale(103%);
+}
+
+.school-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: auto;
+  padding: 20px;
+}
+
+@media screen and (min-width: 700px) {
+  .search-input {
+    width: 300px;
+  }
+}
