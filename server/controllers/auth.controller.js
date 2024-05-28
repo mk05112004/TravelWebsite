@@ -51,17 +51,45 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { email, phone, password } = req.body;
+    const admin = {
+      _id: 1,
+      firstName: 'Admin',
+      lastName: 'Admin',
+      email: process.env.ADMIN_EMAIL,
+      phone: process.env.ADMIN_PHONE,
+      password: process.env.ADMIN_PASSWORD,
+      role: 'admin',
+    };
 
-    if (!email && !password) {
-      return res
-        .status(400)
-        .json({ success: true, message: 'email is required' });
+    if (!email && !phone) {
+      return res.status(400).json({
+        success: true,
+        message: 'please provide an email or phone number',
+      });
     }
 
     if (!password) {
       return res
         .status(400)
         .json({ success: true, message: 'password is required' });
+    }
+
+    if (email === admin.email && password === admin.password) {
+      const token = jwt.sign(
+        {
+          id: admin._id,
+          email: admin.email,
+          phone: admin.phone,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: '30d' }
+      );
+
+      return res.status(200).json({
+        success: true,
+        data: { user: admin },
+        message: 'successfully logged in',
+      });
     }
 
     // find where email or password is equal
