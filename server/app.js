@@ -5,6 +5,9 @@ require('dotenv').config();
 
 // routers
 const authRouter = require('./routes/auth.router');
+const schoolsRouter = require('./routes/schools.router');
+const travelsRouter = require('./routes/travels.router');
+const reservationsRouter = require('./routes/reservations.router');
 const errorHandler = require('./middlewares/error.middleware');
 
 // constants
@@ -20,6 +23,9 @@ app.use(express.json());
 
 // routes
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/schools', schoolsRouter);
+app.use('/api/v1/travels', travelsRouter);
+app.use('/api/v1/reservations', reservationsRouter);
 
 app.use(errorHandler);
 
