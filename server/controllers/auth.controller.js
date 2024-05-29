@@ -85,9 +85,11 @@ const login = async (req, res, next) => {
         { expiresIn: '30d' }
       );
 
+      const { password, ...adminWithoutPassword } = admin;
+
       return res.status(200).json({
         success: true,
-        data: { user: admin },
+        data: { user: adminWithoutPassword, token },
         message: 'successfully logged in',
       });
     }
