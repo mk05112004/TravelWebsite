@@ -80,6 +80,7 @@ const login = async (req, res, next) => {
           id: admin._id,
           email: admin.email,
           phone: admin.phone,
+          role: admin.role,
         },
         process.env.JWT_SECRET,
         { expiresIn: '30d' }
@@ -116,6 +117,7 @@ const login = async (req, res, next) => {
         id: user._id,
         email: user.email,
         phone: user.phone,
+        role: user.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: '30d' }
