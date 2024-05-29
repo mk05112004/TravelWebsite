@@ -44,10 +44,10 @@ const setListeners = (card) => {
   const updateButton = card.querySelector('.update-btn');
   const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
-  card.addEventListener('click', () => {
+  card.onclick = () => {
     localStorage.setItem('school-id', card.id);
     window.location.pathname = '/client/students-dashboard.html';
-  });
+  };
   deleteButton.addEventListener('click', () => {
     const deleteModal = document.getElementById('deleteModal');
     deleteModal.querySelector(
