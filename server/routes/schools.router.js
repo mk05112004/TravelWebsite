@@ -14,15 +14,27 @@ const {
   updateUser,
   deleteUser,
 } = require('../controllers/users.controller');
+const adminMiddleware = require('../middlewares/admin.middleware');
+const authMiddleware = require('../middlewares/auth.middleware');
 
-router.route('/').post(createSchool).get(getSchools);
-router.route('/:id').get(getSchool).put(updateSchool).delete(deleteSchool);
+router
+  .route('/')
+  .post(authMiddleware, adminMiddleware, createSchool)
+  .get(getSchools);
+router
+  .route('/:id')
+  .get(getSchool)
+  .put(authMiddleware, adminMiddleware, updateSchool)
+  .delete(authMiddleware, adminMiddleware, deleteSchool);
 
-router.route('/:schoolId/users').post(createUser).get(getUsers);
+router
+  .route('/:schoolId/users')
+  .post(authMiddleware, adminMiddleware, createUser)
+  .get(getUsers);
 router
   .route('/:schoolId/users/:id')
   .get(getUser)
-  .put(updateUser)
-  .delete(deleteUser);
+  .put(authMiddleware, adminMiddleware, updateUser)
+  .delete(authMiddleware, adminMiddleware, deleteUser);
 
 module.exports = router;
