@@ -108,6 +108,10 @@ td {
   transform: scale(103%);
 }
 
+.card-body > span {
+  display: block;
+}
+
 .school-card img {
   width: 150px;
   height: 150px;
@@ -132,6 +136,11 @@ td {
 .details > p {
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+.body-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 700px) {
