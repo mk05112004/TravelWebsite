@@ -86,7 +86,7 @@ td {
 }
 
 .last-column {
-  width: 250px;
+  text-align: right;
 }
 
 .last-column button:last-child {
@@ -114,6 +114,24 @@ td {
   border-radius: 50%;
   margin: auto;
   padding: 20px;
+}
+
+.tag {
+  font-size: 0.9rem;
+  color: #007975;
+  border: 1.8px solid #007975;
+  border-radius: 15px;
+  padding: 6px 15px;
+  margin-right: 20px;
+}
+
+.tag i {
+  margin-right: 2px;
+}
+
+.details > p {
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 @media screen and (min-width: 700px) {
