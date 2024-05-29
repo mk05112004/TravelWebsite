@@ -15,7 +15,7 @@ const reservationSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ['pending', 'approved', 'rejected'],
-      required: true,
+      default: 'pending',
     },
     rate: {
       type: Number,
