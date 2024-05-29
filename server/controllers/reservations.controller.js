@@ -3,9 +3,15 @@ const Reservation = require('../models/Reservation');
 
 const createReservation = async (req, res, next) => {
   try {
+    const { id: userId } = req.user;
     const { body } = req;
+    const { travelId } = req.params;
 
-    const newReservation = new Reservation({ ...body });
+    const newReservation = new Reservation({
+      ...body,
+      user: userId,
+      travel: travelId,
+    });
 
     const reservation = await newReservation.save();
 
@@ -22,7 +28,13 @@ const createReservation = async (req, res, next) => {
 
 const getReservations = async (req, res, next) => {
   try {
-    const reservations = await Reservation.find();
+    const { status } = req.query;
+    const reservations = await Reservation.find({ status })
+      .populate('travel')
+      .populate({
+        path: 'user',
+        select: ['firstName', 'lastName', 'email', 'phone'],
+      });
 
     res.status(StatusCodes.OK).json({
       success: true,
