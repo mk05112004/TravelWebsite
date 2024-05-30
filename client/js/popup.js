@@ -1,5 +1,6 @@
 let previewContainer = document.querySelector('.tours-preview');
 let previewBox = previewContainer.querySelectorAll('.preview');
+let preview = previewContainer.querySelector('.preview');
 let kawther = document.querySelectorAll('.tm_tours_box_1');
 
 const SERVER_URL = 'http://localhost:3000';
@@ -8,13 +9,14 @@ console.log(kawther);
 kawther.forEach((tm_tours_box_1) => {
   tm_tours_box_1.onclick = () => {
     previewContainer.style.display = 'flex';
-    let name = tm_tours_box_1.getAttribute('data-name');
-    previewBox.forEach((preview) => {
-      let target = preview.getAttribute('data-target');
-      if (name == target) {
-        preview.classList.add('active');
-      }
-    });
+    preview.classList.add('active');
+    // let name = tm_tours_box_1.getAttribute('data-name');
+    // previewBox.forEach((preview) => {
+    //   let target = preview.getAttribute('data-target');
+    //   if (name == target) {
+    //     preview.classList.add('active');
+    //   }
+    // });
   };
 });
 
@@ -25,29 +27,34 @@ previewBox.forEach((close) => {
   };
 });
 
-
-
 //reserve button
 let reserveButton = document.querySelector('.cart');
 reserveButton.addEventListener('click', reserveTour);
 //reserveTour
-function reserveTour() {
+function reserveTour(e) {
   // Close the popup
   let activePreview = document.querySelector('.preview.active');
-  activePreview.classList.remove('active');
-  previewContainer.style.display = 'none';
+  console.log(e.target);
+  const travelId = e.target.id;
 
   // Make the API request
-  let travelId = activePreview.getAttribute('data-id');
-  fetch(`http://localhost:3000/api/v1/travels/${travelId}/reservations`, {
-    method: 'POST'
+  // let travelId = activePreview.getAttribute('data-id');
+  const token = localStorage.getItem('token');
+  fetch(`${SERVER_URL}/api/v1/travels/${travelId}/reservations`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
   })
-  .then(response => {
-    // Handle the response
-  })
-  .catch(error => {
-    console.error(error);
-  });
+    .then((response) => {
+      // Handle the response
+      activePreview.classList.remove('active');
+      previewContainer.style.display = 'none';
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 const createCard = (travel) => {
@@ -86,6 +93,25 @@ const createCard = (travel) => {
   return cardContent;
 };
 
+const setListeners = (card, travel) => {
+  card.onclick = () => {
+    const { _id, name, description, image, price, currency } = travel;
+    const preview = document.querySelector('.preview');
+    const reserveButton = preview.querySelector('.cart');
+    const previewTitle = preview.querySelector('.popup-title');
+    const previewDesc = preview.querySelector('.popup-desc');
+    const previewImg = preview.querySelector('.popup-img');
+    const previewPrice = preview.querySelector('.price');
+    reserveButton.id = _id;
+    previewTitle.textContent = name;
+    previewDesc.textContent = description;
+    previewImg.src = image;
+    previewPrice.textContent = `${price} ${currency}`;
+    previewContainer.style.display = 'flex';
+    preview.classList.add('active');
+  };
+};
+
 const fetchTravels = () => {
   const cardsContainer = document.getElementById('reveal');
   fetch(`${SERVER_URL}/api/v1/travels`)
@@ -98,12 +124,14 @@ const fetchTravels = () => {
         const travelCard = document.createElement('div');
         const card = document.createElement('div');
         travelCard.classList.add('col-md-6', 'col-sm-6', 'col-xs-12');
-        card.id = travel.id
-        card.dataset.rating = travel.rating
+        card.id = travel._id;
+        card.dataset.rating = travel.rating;
         card.classList.add('tm_tours_box_1');
         const cardContent = createCard(travel);
         card.innerHTML = cardContent;
-        cardsContainer.appendChild(card);
+        setListeners(card, travel);
+        travelCard.appendChild(card);
+        cardsContainer.appendChild(travelCard);
       });
     });
 };
