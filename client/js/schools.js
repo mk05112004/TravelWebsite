@@ -47,7 +47,7 @@ const setListeners = (card) => {
 
   studentsBtn.onclick = () => {
     localStorage.setItem('school-id', card.id);
-    window.location.pathname = '/client/students-dashboard.html';
+    window.location.pathname = '/students-dashboard.html';
   };
   deleteButton.addEventListener('click', () => {
     const deleteModal = document.getElementById('deleteModal');
