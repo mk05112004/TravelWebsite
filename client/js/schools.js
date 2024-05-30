@@ -42,12 +42,13 @@ const buttons = `
 const setListeners = (card) => {
   const deleteButton = card.querySelector('.delete-btn');
   const updateButton = card.querySelector('.update-btn');
+  const studentsBtn = card.querySelector('.students-btn');
   const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
-  card.addEventListener('click', () => {
+  studentsBtn.onclick = () => {
     localStorage.setItem('school-id', card.id);
     window.location.pathname = '/client/students-dashboard.html';
-  });
+  };
   deleteButton.addEventListener('click', () => {
     const deleteModal = document.getElementById('deleteModal');
     deleteModal.querySelector(
@@ -58,8 +59,12 @@ const setListeners = (card) => {
     deleteModal
       .querySelector('.modal-footer .btn-danger')
       .addEventListener('click', () => {
+        const token = localStorage.getItem('token');
         fetch(`${SERVER_URL}/api/v1/schools/${card.id}`, {
           method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }).then(() => {
           fetchSchools();
           modal.hide();
@@ -106,7 +111,10 @@ const createCard = (school) => {
       alt="school logo"
     />
     <div class="card-body">
-      <h5 class="card-title">${name}</h5>
+      <div class="body-header">
+        <h5 class="card-title">${name}</h5>
+        <button class="btn students-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
       <p class="card-address">${state}, ${city}</p>
       <span class="card-email">${email}</span>
       <span class="card-phone">${phone}</span>
@@ -120,6 +128,7 @@ const createCard = (school) => {
 
 const createSchool = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const school = {};
@@ -130,6 +139,7 @@ const createSchool = (e) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(school),
   }).then(() => {
@@ -139,6 +149,7 @@ const createSchool = (e) => {
 
 const updateSchool = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const school = {};
@@ -149,6 +160,7 @@ const updateSchool = (e) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(school),
   }).then(() => {
@@ -157,7 +169,13 @@ const updateSchool = (e) => {
 };
 
 const fetchSchools = () => {
-  fetch(`${SERVER_URL}/api/v1/schools`)
+  const token = localStorage.getItem('token');
+  fetch(`${SERVER_URL}/api/v1/schools`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       const { data: schools } = data;

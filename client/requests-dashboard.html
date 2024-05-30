@@ -36,83 +36,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Schools</a
-              >
+              <a class="nav-link" href="schools-dashboard.html">Schools</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="travels-dashboard.html">Travels</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="requests-dashboard.html">Requests</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="requests-dashboard.html"
+                >Requests</a
+              >
             </li>
-            <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li> -->
           </ul>
-          <!-- <form class="d-flex" role="search">
-            <input
-              class="search-input form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success search-button" type="submit">
-              Search
-            </button>
-          </form> -->
         </div>
       </div>
     </nav>
-    <div class="header-space">
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link active" data-level="P1" aria-current="page" href="#">Level 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-level="P2" href="#">Level 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-level="P3" href="#">Level 3</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-level="P4" href="#">Level 4</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-level="P5" href="#">Level 5</a>
-        </li>
-      </ul>
-      <button
-        id="add__update-btn"
-        class="btn btn-outline-primary new-button"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
-      >
-        new student +
-      </button>
-
-      <div
+    <div>
+      <!-- <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
         id="offcanvasRight"
@@ -190,47 +132,6 @@
                 placeholder="********"
               />
             </div>
-            <!-- <div class="mb-3">
-              <label for="travel-description" class="form-label"
-                >Description</label
-              >
-              <textarea
-                type="text"
-                class="form-control"
-                id="travel-description"
-                placeholder="Some description"
-              ></textarea>
-            </div> -->
-            <!-- <div class="mb-3">
-              <label for="travel-image" class="form-label">Image URL</label>
-              <input
-                type="text"
-                class="form-control"
-                id="travel-image"
-                aria-describedby="travel-image"
-                placeholder="https://example.com/image.jpg"
-              />
-            </div> -->
-            <!-- <div class="flex-container mb-3">
-              <div>
-                <label for="travel-date" class="form-label">Date</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="travel-date"
-                  aria-describedby="travel-date"
-                />
-              </div>
-              <div>
-                <label for="inputState" class="form-label">Duration</label>
-                <select class="form-select">
-                  <option value="1 days">1 days</option>
-                  <option value="2 days">2 days</option>
-                  <option value="3 days">3 days</option>
-                  <option value="4 days">4 days</option>
-                </select>
-              </div>
-            </div> -->
 
             <div class="mb-3">
               <label name="level" for="inputState" class="form-label"
@@ -258,9 +159,7 @@
                 </select>
               </div>
               <div>
-                <label name="city" for="city" class="form-label"
-                  >City</label
-                >
+                <label name="city" for="city" class="form-label">City</label>
                 <input
                   type="text"
                   class="form-control"
@@ -271,26 +170,6 @@
                 />
               </div>
             </div>
-
-            <!-- <div class="mb-3">
-              <label for="inputState" class="form-label">Transportation</label>
-              <select class="form-select">
-                <option value="Car">Car</option>
-                <option value="Bus">Bus</option>
-                <option value="Boat">Boat</option>
-              </select>
-            </div> -->
-
-            <!-- <div class="mb-5">
-              <label for="travel-price" class="form-label">Price</label>
-              <input
-                type="text"
-                class="form-control"
-                id="travel-price"
-                aria-describedby="travel-price"
-                placeholder="1000 DA"
-              />
-            </div> -->
 
             <button
               type="submit"
@@ -303,42 +182,40 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="table-container mt-4">
       <table id="table" class="table table-striped" style="width: 100%">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th style="width: 350px;">Email</th>
+            <th>Student</th>
             <th style="text-align: left;">Phone Number</th>
+            <th>Travel</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th style="text-align: left;">Price</th>
             <th class="last-column"></th>
           </tr>
         </thead>
-        <tbody id="students-table" class="tbody">
+        <tbody id="reservations-table" class="tbody">
           <!-- <tr id="1">
             <td class="first-name">Row 1 Data 1</td>
             <td class="last-name">Row 1 Data 2</td>
             <td class="email">Row 1 Data 1</td>
             <td class="phone">Row 1 Data 2</td>
+            <td class="password">Row 1 Data 2</td>
             <td class="last-column">
               <button
                 type="button"
-                class="btn btn-primary"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
+                class="btn btn-success"
               >
-                Update
+                Accept
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteModal"
               >
-                Remove
+                Reject
               </button>
             </td>
           </tr>
@@ -347,23 +224,19 @@
             <td>Row 2 Data 2</td>
             <td>Row 1 Data 1</td>
             <td>Row 1 Data 2</td>
+            <td>Row 1 Data 2</td>
             <td class="last-column">
               <button
                 type="button"
-                class="btn btn-primary"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
+                class="btn btn-success"
               >
-                Update
+                Accept
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteModal"
               >
-                Remove
+                Reject
               </button>
             </td>
           </tr> -->
@@ -371,7 +244,7 @@
       </table>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal
     <div
       class="modal fade"
       id="deleteModal"
@@ -409,7 +282,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -418,6 +291,6 @@
     ></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
     <script src="./js/datatable.js"></script>
-    <script src="./js/student.js"></script>
+    <script src="./js/requests.js"></script>
   </body>
 </html>

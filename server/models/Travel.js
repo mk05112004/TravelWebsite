@@ -25,7 +25,7 @@ const travelSchema = new mongoose.Schema(
       trim: true,
     },
     startDate: {
-      type: Date,
+      type: String,
       required: true,
     },
     duration: {
@@ -67,7 +67,7 @@ const travelSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: true,
+      default: 0,
     },
     // owner: {
     //   type: mongoose.Schema.Types.ObjectId,

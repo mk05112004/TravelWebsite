@@ -8,6 +8,7 @@ const authRouter = require('./routes/auth.router');
 const schoolsRouter = require('./routes/schools.router');
 const travelsRouter = require('./routes/travels.router');
 const reservationsRouter = require('./routes/reservations.router');
+const authMiddleware = require('./middlewares/auth.middleware');
 const errorHandler = require('./middlewares/error.middleware');
 
 // constants
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/schools', schoolsRouter);
 app.use('/api/v1/travels', travelsRouter);
-app.use('/api/v1/reservations', reservationsRouter);
+app.use('/api/v1/reservations', authMiddleware, reservationsRouter);
 
 app.use(errorHandler);
 

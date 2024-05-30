@@ -329,3 +329,13 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: baseline;
     border-radius: .25em;
 }
+
+#error-message {
+  display: block;
+  visibility: hidden;
+  width: 100%;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 5px 10px;
+  border-radius: 4px;
+}

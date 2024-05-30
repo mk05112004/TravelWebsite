@@ -80,14 +80,17 @@ const login = async (req, res, next) => {
           id: admin._id,
           email: admin.email,
           phone: admin.phone,
+          role: admin.role,
         },
         process.env.JWT_SECRET,
         { expiresIn: '30d' }
       );
 
+      const { password, ...adminWithoutPassword } = admin;
+
       return res.status(200).json({
         success: true,
-        data: { user: admin },
+        data: { user: adminWithoutPassword, token },
         message: 'successfully logged in',
       });
     }
@@ -114,6 +117,7 @@ const login = async (req, res, next) => {
         id: user._id,
         email: user.email,
         phone: user.phone,
+        role: user.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: '30d' }

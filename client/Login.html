@@ -33,17 +33,19 @@
         <form id="form">
           <label class="form-input">
             <i class="material-icons">account_box</i>
-            <input type="email" required />
+            <input id="email" type="email" required />
             <span class="label">Email address or phone number</span>
             <div class="underline"></div>
           </label>
 
           <label class="form-input">
             <i class="material-icons">lock</i>
-            <input type="password" required />
+            <input id="password" type="password" required />
             <span class="label">Password</span>
             <div class="underline"></div>
           </label>
+
+          <span id="error-message"></span>
 
           <div class="submit-container clearfix" style="margin-top: 2rem">
             <div
@@ -71,9 +73,10 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="./js/login.js"></script>
   </body>
 </html>
 

@@ -10,6 +10,10 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/60047068a8.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./css/dashboard.css" />
   </head>
   <body>
@@ -32,17 +36,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
+              <a class="nav-link" href="schools-dashboard.html">Schools</a>
+            </li>
+            <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link active"
                 aria-current="page"
-                href="schools-dashboard.html"
-                >Schools</a
+                href="travels-dashboard.html"
+                >Travels</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="travels-dashboard.html"
-                >Travels</a
-              >
+              <a class="nav-link" href="requests-dashboard.html">Requests</a>
             </li>
             <!-- <li class="nav-item dropdown">
                 <a
@@ -83,6 +88,7 @@
     </nav>
     <div class="header">
       <button
+        id="new-button"
         class="btn btn-outline-primary"
         type="button"
         data-bs-toggle="offcanvas"
@@ -99,9 +105,7 @@
         aria-labelledby="offcanvasRightLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            New Travel || Update Travel
-          </h5>
+          <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
           <button
             type="button"
             class="btn-close"
@@ -110,51 +114,54 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <form>
+          <form id="form">
             <div class="mb-3">
-              <label for="travel-name" class="form-label">Name</label>
+              <label for="name" class="form-label">Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="travel-name"
+                id="name"
+                name="name"
                 aria-describedby="travel-name"
                 placeholder="Bni Hawa"
               />
             </div>
             <div class="mb-3">
-              <label for="travel-description" class="form-label"
-                >Description</label
-              >
+              <label for="description" class="form-label">Description</label>
               <textarea
                 type="text"
                 class="form-control"
-                id="travel-description"
+                id="description"
+                name="description"
                 placeholder="Some description"
               ></textarea>
             </div>
             <div class="mb-3">
-              <label for="travel-image" class="form-label">Image URL</label>
+              <label for="image" class="form-label">Image URL</label>
               <input
                 type="text"
                 class="form-control"
-                id="travel-image"
+                id="image"
+                name="image"
                 aria-describedby="travel-image"
                 placeholder="https://example.com/image.jpg"
               />
             </div>
             <div class="flex-container mb-3">
               <div>
-                <label for="travel-date" class="form-label">Date</label>
+                <label for="date" class="form-label">Date</label>
                 <input
-                  type="date"
+                  type="text"
                   class="form-control"
-                  id="travel-date"
+                  id="date"
+                  name="startDate"
                   aria-describedby="travel-date"
+                  placeholder="10/12/2024"
                 />
               </div>
               <div>
                 <label for="inputState" class="form-label">Duration</label>
-                <select class="form-select">
+                <select id="duration" name="duration" class="form-select">
                   <option value="1 days">1 days</option>
                   <option value="2 days">2 days</option>
                   <option value="3 days">3 days</option>
@@ -166,7 +173,7 @@
             <div class="flex-container mb-3">
               <div>
                 <label for="inputState" class="form-label">State</label>
-                <select class="form-select">
+                <select id="state" name="state" class="form-select">
                   <option value="Chlef">Chlef</option>
                   <option value="Addrar">Addrar</option>
                   <option value="Tipaza">Tipaza</option>
@@ -174,11 +181,12 @@
                 </select>
               </div>
               <div>
-                <label for="travel-city" class="form-label">City</label>
+                <label for="city" class="form-label">City</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="travel-city"
+                  id="city"
+                  name="city"
                   aria-describedby="travel-city"
                   placeholder="Bni Hawa"
                 />
@@ -187,31 +195,86 @@
 
             <div class="mb-3">
               <label for="inputState" class="form-label">Transportation</label>
-              <select class="form-select">
-                <option value="Car">Car</option>
-                <option value="Bus">Bus</option>
-                <option value="Boat">Boat</option>
+              <select id="transportation" name="transportation" class="form-select">
+                <option value="car">Car</option>
+                <option value="bus">Bus</option>
+                <option value="boat">Boat</option>
+                <option value="plane">Plane</option>
               </select>
             </div>
 
             <div class="mb-5">
-              <label for="travel-price" class="form-label">Price</label>
+              <label for="price" class="form-label">Price</label>
               <input
                 type="text"
                 class="form-control"
-                id="travel-price"
+                id="price"
+                name="price"
                 aria-describedby="travel-price"
                 placeholder="1000 DA"
               />
             </div>
 
-            <button type="submit" class="btn btn-primary">Done</button>
+            <button type="submit" id="submit-travel" class="btn btn-primary">
+              Done
+            </button>
           </form>
         </div>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
+    <div id="travels-container" class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- <div class="col">
+        <div class="card">
+          <img src="./img/1049215-271x180.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="name">Card title</h5>
+            <p class="description">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <div class="mb-3 tags">
+              <span class="tag">
+                <i class="fa-solid fa-sun"></i>
+                <span class="duration">5 days</span>
+              </span>
+              <span class="tag">
+                <i class="fa-solid fa-bus"></i>
+                <span class="transportation">bus</span>
+              </span>
+            </div>
+            <div class="details">
+              <p class="mb-1">
+                Location: <span class="location">Chlef, Chlef</span>
+              </p>
+              <p class="mb-1">
+                Start Date: <span class="location">10/12/2024</span>
+              </p>
+              <p class="mb-2">Price: <span class="price">1000 DA</span></p>
+            </div>
+            <div class="btns">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+              >
+                delete
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col">
         <div class="card">
           <img src="./img/1049215-271x180.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
@@ -306,39 +369,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./img/1049215-271x180.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <div class="btns">
-              <button
-                type="button"
-                class="btn btn-outline-danger"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteModal"
-              >
-                delete
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-primary"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
-              >
-                update
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Modal -->
@@ -383,18 +414,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const submitBtn = document.getElementById('delete-submit');
-        const modal = new bootstrap.Modal(
-          document.getElementById('deleteModal')
-        );
-
-        submitBtn.addEventListener('click', function () {
-          // Close the modal
-          modal.hide();
-        });
-      });
-    </script>
+    <script src="./js/travels.js"></script>
   </body>
 </html>
