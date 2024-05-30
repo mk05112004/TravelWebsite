@@ -25,6 +25,31 @@ previewBox.forEach((close) => {
   };
 });
 
+
+
+//reserve button
+let reserveButton = document.querySelector('.cart');
+reserveButton.addEventListener('click', reserveTour);
+//reserveTour
+function reserveTour() {
+  // Close the popup
+  let activePreview = document.querySelector('.preview.active');
+  activePreview.classList.remove('active');
+  previewContainer.style.display = 'none';
+
+  // Make the API request
+  let travelId = activePreview.getAttribute('data-id');
+  fetch(`http://localhost:3000/api/v1/travels/${travelId}/reservations`, {
+    method: 'POST'
+  })
+  .then(response => {
+    // Handle the response
+  })
+  .catch(error => {
+    console.error(error);
+  });
+}
+
 const createCard = (travel) => {
   const {
     name,
