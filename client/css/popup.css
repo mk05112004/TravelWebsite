@@ -8,6 +8,7 @@
   display: none;
   align-items:center;
   justify-content:center;
+  z-index: 1000;
 }
 .tours-preview .preview{
   display: none;
@@ -19,13 +20,14 @@
   width: 40rem;
   height: 50rem;
   overflow-y: scroll;
-  
+  z-index: 1001;
 }
 .tours-preview .preview.active{
   display: inline-block;
 }
 .tours-preview .preview img{
   width: 30rem;
+  height: 30rem;
 }
 .tours-preview .preview .fa-times{
   position: absolute;
@@ -33,7 +35,8 @@
   right: 1.5rem;
   cursor: pointer;
   color: #444;
-  font-size: 4rem;
+  font-size: 3rem;
+  z-index: 1002;
 }
 .tours-preview .preview .fa-times:hover{
   transform: rotate(90deg);
