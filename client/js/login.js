@@ -29,10 +29,10 @@ const signIn = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('role', user.role);
       if (user.role === 'admin') {
-        window.location.pathname = '/client/schools-dashboard.html';
+        window.location.pathname = '/schools-dashboard.html';
         return;
       }
-      window.location.href = '/client/tours.html';
+      window.location.href = '/tours.html';
     });
 };
 
