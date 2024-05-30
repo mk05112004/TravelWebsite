@@ -5,7 +5,7 @@ canvasTitle.textContent = 'New Travel';
 let mode = 'create';
 let selectedId = '';
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://travel-website-rb63.onrender.com';
 
 const buttons = `
 <div class="btns">
@@ -44,8 +44,12 @@ const setListeners = (card) => {
     deleteModal
       .querySelector('.modal-footer .btn-danger')
       .addEventListener('click', () => {
+        const token = localStorage.getItem('token');
         fetch(`${SERVER_URL}/api/v1/travels/${card.id}`, {
           method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }).then(() => {
           fetchTravels();
           modal.hide();
@@ -132,6 +136,7 @@ const createCard = (travel) => {
 
 const createTravel = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const travel = {};
@@ -154,6 +159,7 @@ const createTravel = (e) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(travel),
   }).then(() => {
@@ -163,6 +169,7 @@ const createTravel = (e) => {
 
 const updateTravel = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const travel = {};
@@ -185,6 +192,7 @@ const updateTravel = (e) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(travel),
   }).then(() => {

@@ -1,6 +1,6 @@
 let selectedId = '';
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://travel-website-rb63.onrender.com';
 
 const buttons = `
 <td class="last-column">

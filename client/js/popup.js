@@ -3,7 +3,7 @@ let previewBox = previewContainer.querySelectorAll('.preview');
 let preview = previewContainer.querySelector('.preview');
 let kawther = document.querySelectorAll('.tm_tours_box_1');
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://travel-website-rb63.onrender.com';
 
 console.log(kawther);
 kawther.forEach((tm_tours_box_1) => {

@@ -10,7 +10,7 @@ let mode = 'create';
 let selectedId = '';
 let selectedLevel = 'P1';
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://travel-website-rb63.onrender.com';
 
 const buttons = `
 <td class="last-column">
@@ -108,6 +108,7 @@ const createRow = (student) => {
 
 const createStudent = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const student = {};
@@ -118,6 +119,7 @@ const createStudent = (e) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(student),
   }).then(() => {
@@ -127,6 +129,7 @@ const createStudent = (e) => {
 
 const updateStudent = (e) => {
   e.preventDefault();
+  const token = localStorage.getItem('token');
   const form = document.getElementById('form');
   const formData = new FormData(form);
   const student = {};
@@ -137,6 +140,7 @@ const updateStudent = (e) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(student),
   }).then(() => {
@@ -145,7 +149,17 @@ const updateStudent = (e) => {
 };
 
 const fetchStudents = () => {
-  fetch(`${SERVER_URL}/api/v1/schools/${schoolId}/users?level=${selectedLevel}`)
+  const token = localStorage.getItem('token');
+  fetch(
+    `${SERVER_URL}/api/v1/schools/${schoolId}/users?level=${selectedLevel}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       const { data: students } = data;

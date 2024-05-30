@@ -1,6 +1,6 @@
 const submit = document.getElementById('submit');
 const errorMessage = document.getElementById('error-message');
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'https://travel-website-rb63.onrender.com';
 
 const signIn = () => {
   fetch(`${SERVER_URL}/api/v1/auth/login`, {
