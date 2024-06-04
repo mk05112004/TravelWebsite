@@ -317,13 +317,13 @@ main p {
   width: 100%;
   display: flex;
   align-items: start;
-  justify-content: flex-start;
+  justify-content: start;
   gap: 20px;
   text-align: left;
 }
 
 .location-image {
-  width: 80%;
+  width: 50%;
 }
 
 .location-image img {
@@ -334,6 +334,7 @@ main p {
 }
 
 .booking-description {
+  width: 50%;
   padding: 20px;
 }
 
